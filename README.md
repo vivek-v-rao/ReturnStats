@@ -55,3 +55,66 @@ Typical Yahoo Finance daily fields include:
 
 ## Notes
 - Parquet requires `pyarrow`.
+
+## Sample Output
+Output from `xreturn_stats.py` for 4 stocks is
+
+```
+ret_scale: 100.0
+prices file: prices.parquet
+#obs, symbols, columns: 1508 4 1508
+fields: ['Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
+fields_ret: ['Open', 'Close', 'Adj Close']
+return_type: simple
+
+field: Open
+#obs, first, last: 1508 2020-01-02 2025-12-31
+
+return stats by symbol (Open):
+        ann_mean  ann_vol   skew  kurtosis      min     max
+symbol                                                     
+NVDA     72.5394  54.3091 0.3201    4.5756 -15.8860 27.5174
+AAPL     27.0691  32.3920 0.0583    4.5826  -9.1535 13.6163
+MSFT     22.7810  28.3199 0.0692    3.2563  -8.4075 10.4561
+AMZN     22.2193  37.4451 0.1426    4.2975 -14.0537 14.3395
+
+field: High
+#obs, first, last: 1508 2020-01-02 2025-12-31
+
+field: Low
+#obs, first, last: 1508 2020-01-02 2025-12-31
+
+field: Close
+#obs, first, last: 1508 2020-01-02 2025-12-31
+
+return stats by symbol (Close):
+        ann_mean  ann_vol   skew  kurtosis      min     max
+symbol                                                     
+NVDA     71.5758  53.1843 0.3513    4.5175 -18.4521 24.3696
+AAPL     26.5640  31.8072 0.2859    6.7932 -12.8647 15.3289
+MSFT     22.8014  29.5564 0.1093    7.5280 -14.7390 14.2169
+AMZN     21.2281  35.7027 0.1428    4.3280 -14.0494 13.5359
+
+field: Adj Close
+#obs, first, last: 1508 2020-01-02 2025-12-31
+
+return stats by symbol (Adj_Close):
+        ann_mean  ann_vol   skew  kurtosis      min     max
+symbol                                                     
+NVDA     71.6508  53.1849 0.3514    4.5175 -18.4521 24.3696
+AAPL     27.1589  31.8095 0.2847    6.7944 -12.8647 15.3289
+MSFT     23.6662  29.5473 0.1064    7.5347 -14.7390 14.2169
+AMZN     21.2281  35.7027 0.1428    4.3280 -14.0494 13.5359
+
+field: Volume
+#obs, first, last: 1508 2020-01-02 2025-12-31
+
+return stats (pooled across symbols):
+           ann_mean  ann_vol   skew  kurtosis      min     max
+field                                                         
+Open        36.1522  39.3917 0.3067    6.6455 -15.8860 27.5174
+Close       35.5423  38.7055 0.3590    7.0671 -18.4521 24.3696
+Adj Close   35.9260  38.7041 0.3580    7.0683 -18.4521 24.3696
+
+time elapsed: 0.596 seconds
+```
