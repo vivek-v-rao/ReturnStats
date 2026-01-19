@@ -35,7 +35,15 @@ ReturnStats downloads daily prices from Yahoo Finance for a set of symbols and c
 - **CSV**: set `out_prices_file` to a `.csv` path.
 - **Parquet**: set `out_prices_file` to a `.parquet` path.
 
-If `write_single_csv_all_fields` is **True**, output is a single file with MultiIndex columns (`symbol`, `field`). If **False**, one file per field is written.
+If `write_single_csv_all_fields` is **True**, output is a single file with MultiIndex columns (`symbol`, `field`). If **False**, one file per field is written. A CSV file starts like this:
+
+```
+symbol,NVDA,NVDA,NVDA,NVDA,NVDA,NVDA,AAPL,AAPL,AAPL,AAPL,AAPL,AAPL
+field,Open,High,Low,Close,Adj Close,Volume,Open,High,Low,Close,Adj Close,Volume
+Date,,,,,,,,,,,,
+2000-01-03,0.0984,0.0992,0.0919,0.0975,0.0894,300912000,0.9364,1.0045,0.9079,0.9994,0.8393,535796800
+2000-01-04,0.0958,0.0961,0.0901,0.0949,0.087,300480000,0.9665,0.9877,0.9035,0.9152,0.7685,512377600
+```
 
 ## Return settings
 Both scripts share the same return logic via `stats.py`.
