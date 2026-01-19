@@ -1,7 +1,7 @@
 # ReturnStats
 
 ## Overview
-ReturnStats downloads daily prices from Yahoo Finance for a set of symbols and computes summary statistics, or reads a saved prices file and computes the same statistics. The project is intentionally small and focused on data ingestion and return/correlation summaries. Prices can be saved in Parquet or CSV format. Parquet is a columnar, compressed file format that can be read an order of magnitude faster than CSV for large datasets. 
+ReturnStats downloads daily prices from Yahoo Finance for a set of symbols and computes summary statistics, or reads a saved prices file and computes the same statistics. The project is focused on data ingestion and return/correlation summaries. Prices can be saved in Parquet or CSV format. Parquet is a columnar, compressed file format that can be read an order of magnitude faster than CSV for large datasets. 
 
 ## Files
 - `xyfinance_fields.py`: Download prices from Yahoo Finance, optionally write to CSV or Parquet, and compute summary statistics.
