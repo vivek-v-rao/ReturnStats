@@ -54,5 +54,4 @@ Typical Yahoo Finance daily fields include:
 - **Volume**
 
 ## Notes
-- Log returns require strictly positive prices.
 - Parquet requires `pyarrow`.
