@@ -1,43 +1,47 @@
-ReturnStats
+# ReturnStats
 
-Overview
+## Overview
 ReturnStats downloads daily Yahoo Finance prices and computes summary statistics, or reads a saved prices file and computes the same statistics. The project is intentionally small and focused on data ingestion and return/correlation summaries.
 
-Files
-- xyfinance_fields.py: Download prices from Yahoo Finance, optionally write to CSV or Parquet, and compute summary statistics.
-- xreturn_stats.py: Read saved prices (CSV or Parquet) and compute the same summary statistics.
-- stats.py: Shared calculation utilities for returns, pooled stats, per-symbol stats, and correlation summaries.
-- yfinance_util.py: Helper for Yahoo Finance downloads.
+## Files
+- `xyfinance_fields.py`: Download prices from Yahoo Finance, optionally write to CSV or Parquet, and compute summary statistics.
+- `xreturn_stats.py`: Read saved prices (CSV or Parquet) and compute the same summary statistics.
+- `stats.py`: Shared calculation utilities for returns, pooled stats, per-symbol stats, and correlation summaries.
+- `yfinance_util.py`: Helper for Yahoo Finance downloads.
 
-Requirements
+## Requirements
 - Python 3.9+
-- pandas
-- numpy
-- yfinance
-- pyarrow (only required for Parquet)
+- `pandas`
+- `numpy`
+- `yfinance`
+- `pyarrow` (only required for Parquet)
 
-Quick start
-1) Download prices and compute stats:
-   - Edit settings near the top of xyfinance_fields.py (symbols_file, fields, date range, output file).
-   - Run:
-     python xyfinance_fields.py
+## Quick start
+**1) Download prices and compute stats**
+- Edit settings near the top of `xyfinance_fields.py` (`symbols_file`, `fields`, date range, output file).
+- Run:
+  ```
+  python xyfinance_fields.py
+  ```
 
-2) Compute stats from a saved prices file:
-   - Edit settings near the top of xreturn_stats.py (in_prices_file, fields_ret, ret_scale, log returns).
-   - Run:
-     python xreturn_stats.py
+**2) Compute stats from a saved prices file**
+- Edit settings near the top of `xreturn_stats.py` (`in_prices_file`, `fields_ret`, `ret_scale`, log returns).
+- Run:
+  ```
+  python xreturn_stats.py
+  ```
 
-Output formats
-- CSV: set out_prices_file to a .csv path.
-- Parquet: set out_prices_file to a .parquet path.
+## Output formats
+- **CSV**: set `out_prices_file` to a `.csv` path.
+- **Parquet**: set `out_prices_file` to a `.parquet` path.
 
-If write_single_csv_all_fields is True, output is a single file with MultiIndex columns (symbol, field). If False, one file per field is written.
+If `write_single_csv_all_fields` is **True**, output is a single file with MultiIndex columns (`symbol`, `field`). If **False**, one file per field is written.
 
-Return settings
-Both scripts share the same return logic via stats.py.
-- ret_scale: scale applied to returns (e.g., 100 for percent returns).
-- use_log_returns: compute log returns if True; otherwise simple returns.
+## Return settings
+Both scripts share the same return logic via `stats.py`.
+- **ret_scale**: scale applied to returns (e.g., `100` for percent returns).
+- **use_log_returns**: compute log returns if **True**; otherwise simple returns.
 
-Notes
+## Notes
 - Log returns require strictly positive prices.
-- Parquet requires pyarrow.
+- Parquet requires `pyarrow`.
