@@ -43,5 +43,4 @@ Both scripts share the same return logic via `stats.py`.
 - **use_log_returns**: compute log returns if **True**; otherwise simple returns.
 
 ## Notes
-- Log returns require strictly positive prices.
 - Parquet requires `pyarrow`.
