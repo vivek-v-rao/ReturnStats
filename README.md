@@ -42,5 +42,12 @@ Both scripts share the same return logic via `stats.py`.
 - **ret_scale**: scale applied to returns (e.g., `100` for percent returns).
 - **use_log_returns**: compute log returns if **True**; otherwise simple returns.
 
+## Common fields
+Typical Yahoo Finance daily fields include:
+- **Open**, **High**, **Low**, **Close**
+- **Adj Close** (split/dividend adjusted close)
+- **Volume**
+
 ## Notes
+- Log returns require strictly positive prices.
 - Parquet requires `pyarrow`.
