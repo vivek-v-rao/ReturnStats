@@ -25,7 +25,7 @@ ReturnStats downloads daily Yahoo Finance prices and computes summary statistics
   ```
 
 **2) Compute stats from a saved prices file**
-- Edit settings near the top of `xreturn_stats.py` (`in_prices_file`, `fields_ret`, `ret_scale`, log returns).
+- Edit settings near the top of `xreturn_stats.py` (`in_prices_file`, `fields_ret`, `ret_scale`, log returns, optional date and symbol limits).
 - Run:
   ```
   python xreturn_stats.py
@@ -41,6 +41,11 @@ If `write_single_csv_all_fields` is **True**, output is a single file with Multi
 Both scripts share the same return logic via `stats.py`.
 - **ret_scale**: scale applied to returns (e.g., `100` for percent returns).
 - **use_log_returns**: compute log returns if **True**; otherwise simple returns.
+
+## Filters
+`xreturn_stats.py` supports optional filters:
+- **max_symbols**: limit the number of symbols read from the file.
+- **date_min** / **date_max**: limit the date range analyzed (strings like `YYYY-MM-DD`).
 
 ## Common fields
 Typical Yahoo Finance daily fields include:
