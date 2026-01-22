@@ -29,8 +29,8 @@ dropna_df = False
 print_corr_returns = False
 print_prices = False
 describe_returns = False
-out_prices_file = "prices.parquet" # "prices.csv"
-max_stocks = 1000 # None
+out_prices_file = "prices.csv" # "prices.parquet"
+max_stocks = 5 # 1000 # None
 ret_scale = 100.0
 use_log_returns = False
 

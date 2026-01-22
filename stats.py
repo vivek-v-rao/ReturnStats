@@ -45,6 +45,7 @@ def return_stats_by_symbol(df_ret: pd.DataFrame, obs_year: int) -> pd.DataFrame:
     """Compute return stats by symbol."""
     df_stats = pd.DataFrame(index=df_ret.columns)
     df_stats.index.name = "symbol"
+    df_stats["n_obs"] = df_ret.count()
     df_stats["ann_mean"] = df_ret.mean(skipna=True) * obs_year
     df_stats["ann_vol"] = df_ret.std(ddof=1, skipna=True) * np.sqrt(obs_year)
     df_stats["skew"] = df_ret.skew(skipna=True)

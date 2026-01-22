@@ -63,10 +63,13 @@ def main() -> int:
 
     ret_scale = 100.0
     use_log_returns = False
-    in_prices_file = "prices.parquet" # "prices.csv"
+    in_prices_file = "prices.csv" # "prices.parquet"
     dropna_df = False
     print_corr_returns = False
     describe_returns = False
+    max_symbols = 1000
+    date_min = None # "2020-01-01"
+    date_max = None # "2025-12-31"
 
     # correlation off-diagonal summary stats (median/mean/sd/min/max) by field
     compute_corr_stats = False # True
@@ -85,6 +88,20 @@ def main() -> int:
 
     in_path = Path(in_prices_file)
     df_all = _read_prices_file(in_path)
+    if date_min is not None:
+        date_min = pd.to_datetime(date_min)
+    if date_max is not None:
+        date_max = pd.to_datetime(date_max)
+    if date_min is not None or date_max is not None:
+        df_all = df_all.loc[date_min:date_max]
+
+    if max_symbols is not None:
+        if isinstance(df_all.columns, pd.MultiIndex) and df_all.columns.nlevels == 2:
+            symbols = list(pd.unique(df_all.columns.get_level_values(0)))[:max_symbols]
+            df_all = df_all.loc[:, df_all.columns.get_level_values(0).isin(symbols)]
+        else:
+            df_all = df_all.iloc[:, :max_symbols]
+
     fields_available = _get_fields_from_df(df_all, flat_field="Close")
     fields = _parse_fields_arg(fields, fields_available)
     fields_ret = _parse_fields_arg(fields_ret, fields)
